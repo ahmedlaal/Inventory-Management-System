@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InventoryX</title>
+</head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<style>
+    body {
+background-color: #fbfbfb;
+}
+@media (min-width: 991.98px) {
+main {
+padding-left: 240px;
+}
+}
+
+/* Sidebar */
+.sidebar {
+position: fixed;
+top: 0;
+bottom: 0;
+left: 0;
+padding: 58px 0 0; /* Height of navbar */
+box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+width: 240px;
+z-index: 600;
+}
+
+@media (max-width: 991.98px) {
+.sidebar {
+width: 100%;
+}
+}
+.sidebar .active {
+border-radius: 5px;
+box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+}
+
+.sidebar-sticky {
+position: relative;
+top: 0;
+height: calc(100vh - 48px);
+padding-top: 0.5rem;
+overflow-x: hidden;
+overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+}
+</style>
+<body>
+    <!--Side Bar-->
+    <div th:replace="~{fragments/sidebar :: sidebar}"></div>
+    <!--Side Bar-->
+<!--Main layout-->
+<main style="margin-top: 58px;">
+<div class="container pt-4">
+    <h2>Update Inventory</h2>
+    <form action="/products/update" method="POST">
+            <input type="text" class="form-control" id="exampleFormControlInput0" name="id" th:value="${product.id}" style="display:none">
+        <div class="mb-3">
+
+        <label for="exampleFormControlInput1" class="form-label">Product Code</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" name="code" th:value="${product.code}">
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">Product Name</label>
+      <input type="text" class="form-control" id="exampleFormControlInput2" name="name" th:value="${product.name}">
+    </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Vendor Name</label>
+        <input type="text" class="form-control" id="exampleFormControlInput3" name="vname" th:value="${product.vname}">
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Product Type</label>
+        <input type="text" class="form-control" id="exampleFormControlInput4"  name="type"th:value="${product.type}">
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Price</label>
+        <input type="text" class="form-control" id="exampleFormControlInput5" name="price" th:value="${product.price}">
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Product Details</label>
+          <input type="text" class="form-control" id="exampleFormControlInput6" name="detail" th:value="${product.detail}" style="height: fit-content;" >
+      </div>
+      <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+</div>
+</main>
+<!--Main layout-->
+
+
+</body>
+</html>
